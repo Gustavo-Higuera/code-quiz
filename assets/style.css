@@ -1,0 +1,44 @@
+.top {
+  display: flex;
+  justify-content: space-between;
+  margin: 1em 1em 5em 1em;
+  font-size: 20px;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  margin-bottom: 2em;
+  font-size: 50px;
+  font-weight: bolder;
+}
+
+#quiz-description {
+  margin-bottom: 2em;
+  font-size: 30px;
+  font-weight: bold;
+  width: 60%;
+  text-align: center;
+}
+
+#btn {
+  padding: 10px 20px;
+}
+
+#time-block {
+  font-weight: bold;
+}
+
+#high-score {
+  color: rgb(211, 39, 211);
+  font-weight: bold;
+}
+
+/* .quiz-questions {
+  display: none;
+} */
