@@ -11,66 +11,30 @@
 </head>
 
 <body>
-  <section class="top">
+  <header>
     <p id="high-score">View High Scores</p>
     <p id="time-block"></p>
-  </section>
+  </header>
 
   <section class="content-container">
     <h1 class="header">Code Quiz Challenge</h1>
     <p id="quiz-description">Try to answer the following code-related questions within the time limit.
-      keep in mind that incorrect answers will penalize your score/time by ten seconds!
+      Keep in mind that incorrect answers will penalize your score/time by ten seconds!
     </p>
     <button type="button" id="btn">Start Quiz</button>
   </section>
 
   <section class="quiz">
-    <!-- 
-    <div id="question2">
-      <p>
-        The condition in an if/else statement is enclosed with _____.
-      </p>
-      <div id="answers">
-        <button type="submit">1. Quotes</button>
-        <button type="submit">2. Curly Brackets</button>
-        <button type="submit">3. Parenthesis</button>
-        <button type="submit">4. Square Brackets</button>
-      </div>
+    <h1 id="question"></h1>
+    <div id="answer-btns" class="hidden">
+      <button></button>
+      <button></button>
+      <button></button>
+      <button></button>
     </div>
-    <div id="question3">
-      <p>
-        Arrays in JavaScript can be used to store:
-      </p>
-      <div id="answers">
-        <button type="submit">1. Numbers and Strings</button>
-        <button type="submit">2. Other Arrays</button>
-        <button type="submit">3. Booleans</button>
-        <button type="submit">4. All of the Above</button>
-      </div>
-    </div>
-    <div id="question4">
-      <p>
-        String values must be enclosed within ____ when being assigned to variables.
-      </p>
-      <div id="answers">
-        <button type="submit">1. Commas</button>
-        <button type="submit">2. Curly Brackets</button>
-        <button type="submit">3. Quotes</button>
-        <button type="submit">4. Parenthesis</button>
-      </div>
-    </div>
-    <div id="question5">
-      <p>
-        A very useful tool used during development and debugging for printing content to the debugger is:
-      </p>
-      <div id="answers">
-        <button type="submit">1. JavaScript</button>
-        <button type="submit">2. Terminal/Bash</button>
-        <button type="submit">3. For Loops</button>
-        <button type="submit">4. Console.log</button>
-      </div>
-    </div> -->
   </section>
+  <section class="feedback"></section>
+  <section id="score-message"></section>
   <script src="./assets/script.js"></script>
 </body>
 

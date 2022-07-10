@@ -2,40 +2,38 @@ var startButton = document.getElementById("btn");
 var timeEl = document.getElementById("time-block");
 var startingContentEl = document.querySelector(".content-container");
 var quizEl = document.querySelector(".quiz");
+var scoreEl = document.getElementById("score-message");
+var feedbackEl = document.querySelector(".feedback");
+var questionEl = document.getElementById("question");
 
-var bodyEl = document.body;
 
-var h1El = document.createElement("h1");
-h1El.setAttribute("style", " margin-bottom: 2em; font-size: 50px; font-weight: bolder;")
-
-var ulElement = document.createElement("ul");
-ulElement.setAttribute("style", "display: flex; flex-direction: column; width: 25%;")
-
-var buttonEl1 = document.createElement("button");
-buttonEl1.setAttribute("type", "submit");
-buttonEl1.setAttribute("style", "background-color: purple; color: white; font-size: 25px; padding: 10px 15px; cursor: pointer; margin-bottom: 10px;");
-
-var buttonEl2 = document.createElement("button");
-buttonEl2.setAttribute("type", "submit");
-buttonEl2.setAttribute("style", "background-color: purple; color: white; font-size: 25px; padding: 10px 15px; cursor: pointer; margin-bottom: 10px;");
-
-var buttonEl3 = document.createElement("button");
-buttonEl3.setAttribute("type", "submit");
-buttonEl3.setAttribute("style", "background-color: purple; color: white; font-size: 25px; padding: 10px 15px; cursor: pointer; margin-bottom: 10px;");
-
-var buttonEl4 = document.createElement("button");
-buttonEl4.setAttribute("type", "submit");
-buttonEl4.setAttribute("style", "background-color: purple; color: white; font-size: 25px; padding: 10px 15px; cursor: pointer; margin-bottom: 10px;");
-
-var quizEl = document.querySelector(".quiz");
-quizEl.setAttribute("style", "display: flex; justify-content: center; align-items: center; align-self: center; flex-direction: column; width: 100%;");
-
-var timeLeft = 120;
+var questions = [{
+  question: "Commonly used data types DO NOT include:",
+  options: ["Strings", "Booleans", "Alerts", "Numbers"],
+  answer: "Alert"
+},
+{
+  question: "The condition in an if/else statement is enclosed with _____.",
+  options: ["Quotes", "Curly Brackets", "Parenthesis", "Square Brackets"],
+  answer: "Curly Brackets"
+},
+{
+  question: "Arrays in JavaScript can be used to store:",
+  options: ["Numbers and Strings", "Other Arrays", "Booleans", "All of the Above"],
+  answer: "All of the Above"
+},
+{
+  question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+  options: ["JavaScript", "Terminal/Bash", "For Loops", "console.log"],
+  answer: "console.log"
+}];
 
 startButton.addEventListener("click", function () {
-  startTimer();
+  // startTimer();
   startQuiz();
 });
+
+var timeLeft = 120;
 
 function startTimer() {
   var timer = setInterval(() => {
@@ -47,16 +45,33 @@ function startTimer() {
   }, 1000);
 }
 
+
 function startQuiz() {
-  startingContentEl.setAttribute("style", "display: none;");
+  startingContentEl.classList.add("hidden");
 
-  quizEl.appendChild(h1El).textContent = "Commonly used data types DO NOT include:";
-  quizEl.appendChild(ulElement);
-
-  ulElement.appendChild(buttonEl1).textContent = "Strings";
-  ulElement.appendChild(buttonEl2).textContent = "Booleans";
-  ulElement.appendChild(buttonEl3).textContent = "Alerts";
-  ulElement.appendChild(buttonEl4).textContent = "Numbers";
+  questionEl.innerText = questions.question;
 
 }
+
+// WHEN I answer a question
+// THEN I am presented with another question
+
+
+
+
+
+// WHEN I answer a question incorrectly
+// THEN time is subtracted from the clock
+
+
+
+// WHEN all questions are answered or the timer reaches 0
+// THEN the game is over
+
+
+// WHEN the game is over
+// THEN I can save my initials and score
+
+
+
 
