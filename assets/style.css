@@ -53,6 +53,16 @@ button:hover {
   font-weight: bold;
 }
 
+#current-score {
+  color: rgb(211, 39, 211);
+  font-weight: bold;
+}
+
+#answers {
+  display: flex;
+  flex-direction: column;
+}
+
 .quiz {
   display: flex;
   justify-content: center;
@@ -69,4 +79,5 @@ button:hover {
   padding: 10px 15px;
   cursor: pointer;
   margin-bottom: 10px;
+  width: 500px;
 }
