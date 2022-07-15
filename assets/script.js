@@ -7,10 +7,11 @@ var currentScoreEl = document.getElementById("current-score");
 var feedbackEl = document.querySelector(".feedback");
 var questionEl = document.getElementById("question");
 var answersEl = document.getElementById("answers");
-var answerButton1 = document.getElementById("answer-btn1");
-var answerButton2 = document.getElementById("answer-btn2");
-var answerButton3 = document.getElementById("answer-btn3");
-var answerButton4 = document.getElementById("answer-btn4");
+
+var option1 = document.getElementById("option-btn1");
+var option2 = document.getElementById("option-btn2");
+var option3 = document.getElementById("option-btn3");
+var option4 = document.getElementById("option-btn4");
 
 var timeLeft = 120;
 var playerScore = 0;
@@ -42,7 +43,6 @@ startButton.addEventListener("click", function () {
   startQuiz();
 });
 
-var questionIndex = 0;
 currentScoreEl.textContent = `Current Score: ${playerScore}`;
 
 function startTimer() {
@@ -61,63 +61,251 @@ function startQuiz() {
   highScoresEl.classList.add("hidden");
   currentScoreEl.classList.remove("hidden");
 
-  showQuestions();
+  question1();
 }
 
-function showQuestions() {
+function question1() {
   questionEl.innerText = questions[0].question;
   answersEl.classList.remove("hidden");
-  answerButton1.classList.remove("hidden");
-  answerButton2.classList.remove("hidden");
-  answerButton3.classList.remove("hidden");
-  answerButton4.classList.remove("hidden");
+  option1.classList.remove("hidden");
+  option2.classList.remove("hidden");
+  option3.classList.remove("hidden");
+  option4.classList.remove("hidden");
 
-  answerButton1.innerText = questions[0].options[0];
-  answerButton2.innerText = questions[0].options[1];
-  answerButton3.innerText = questions[0].options[2];
-  answerButton4.innerText = questions[0].options[3];
+  option1.innerText = questions[0].options[0];
+  option2.innerText = questions[0].options[1];
+  option3.innerText = questions[0].options[2];
+  option4.innerText = questions[0].options[3];
 
-  validateAnswer();
+  validateQ1();
 }
 
-// WHEN I answer a question
-// THEN I am presented with another question
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
+function validateQ1() {
+  option1.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[0].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question2();
+    } else {
+      timeLeft -= 10;
+    }
+  })
+  option2.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[0].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question2();
+    } else {
+      timeLeft -= 10;
+    }
+  })
+  option3.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[0].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question2();
+    } else {
+      timeLeft -= 10;
+    }
+  })
+  option4.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[0].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question2();
+    } else {
+      timeLeft -= 10;
+    }
+  })
+}
 
-function validateAnswer() {
-  answerButton1.addEventListener("click", function (e) {
-    if (e.target.innerText === questions[0].answer) {
+function question2() {
+  questionEl.innerText = questions[1].question;
+
+  option1.innerText = questions[1].options[0];
+  option2.innerText = questions[1].options[1];
+  option3.innerText = questions[1].options[2];
+  option4.innerText = questions[1].options[3];
+  validateQ2();
+}
+
+function validateQ2() {
+  option1.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[1].answer) {
       console.log("This is the correct answer");
       playerScore += 10;
+      question3();
     } else {
-      console.log("Wrong!");
       timeLeft -= 10;
     }
   })
-  answerButton2.addEventListener("click", function (e) {
-    if (e.target.innerText === questions[0].answer) {
+  option2.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[1].answer) {
       console.log("This is the correct answer");
       playerScore += 10;
+      question3();
     } else {
-      console.log("Wrong!");
       timeLeft -= 10;
     }
   })
-  answerButton3.addEventListener("click", function (e) {
-    if (e.target.innerText === questions[0].answer) {
+  option3.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[1].answer) {
       console.log("This is the correct answer");
       playerScore += 10;
+      question3();
     } else {
-      console.log("Wrong!");
     }
   })
-  answerButton4.addEventListener("click", function (e) {
-    if (e.target.innerText === questions[0].answer) {
+  option4.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[1].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question3();
+    } else {
+      timeLeft -= 10;
+    }
+  })
+}
+
+function question3() {
+  questionEl.innerText = questions[2].question;
+
+  option1.innerText = questions[2].options[0];
+  option2.innerText = questions[2].options[1];
+  option3.innerText = questions[2].options[2];
+  option4.innerText = questions[2].options[3];
+  validateQ3();
+}
+
+function validateQ3() {
+  option1.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[2].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question4();
+    } else {
+      timeLeft -= 10;
+    }
+  })
+  option2.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[2].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question4();
+    } else {
+      timeLeft -= 10;
+    }
+  })
+  option3.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[2].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question4();
+    } else {
+    }
+  })
+  option4.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[2].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question4();
+    } else {
+      timeLeft -= 10;
+    }
+  })
+}
+
+function question4() {
+  questionEl.innerText = questions[3].question;
+
+  option1.innerText = questions[3].options[0];
+  option2.innerText = questions[3].options[1];
+  option3.innerText = questions[3].options[2];
+  option4.innerText = questions[3].options[3];
+  validateQ4();
+}
+
+function validateQ4() {
+  option1.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[3].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question5();
+    } else {
+      timeLeft -= 10;
+    }
+  })
+  option2.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[3].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question5();
+    } else {
+      timeLeft -= 10;
+    }
+  })
+  option3.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[3].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question5();
+    } else {
+      timeLeft -= 10;
+    }
+  })
+  option4.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[3].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question5();
+    } else {
+      timeLeft -= 10;
+    }
+  })
+}
+
+function question5() {
+  questionEl.innerText = questions[4].question;
+
+  option1.innerText = questions[4].options[0];
+  option2.innerText = questions[4].options[1];
+  option3.innerText = questions[4].options[2];
+  option4.innerText = questions[4].options[3];
+  validateQ5();
+}
+
+function validateQ2() {
+  option1.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[1].answer) {
       console.log("This is the correct answer");
       playerScore += 10;
     } else {
-      console.log("Wrong!");
+      timeLeft -= 10;
+    }
+  })
+  option2.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[1].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question2();
+    } else {
+      timeLeft -= 10;
+    }
+  })
+  option3.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[1].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question2();
+    } else {
+    }
+  })
+  option4.addEventListener("click", function (e) {
+    if (e.target.innerText === questions[1].answer) {
+      console.log("This is the correct answer");
+      playerScore += 10;
+      question2();
+    } else {
       timeLeft -= 10;
     }
   })
@@ -131,7 +319,3 @@ function validateAnswer() {
 
 // WHEN the game is over
 // THEN I can save my initials and score
-
-
-
-
