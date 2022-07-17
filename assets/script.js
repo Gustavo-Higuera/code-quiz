@@ -1,4 +1,5 @@
 var startBtn = document.getElementById("btn");
+var nextBtn = document.getElementById("next-btn");
 var timeEl = document.getElementById("time-block");
 var startingContentEl = document.querySelector(".content-container");
 var quizEl = document.querySelector(".quiz");
@@ -6,7 +7,7 @@ var questionEl = document.getElementById("question");
 var answersEl = document.getElementById("answers");
 var highScoresEl = document.getElementById("high-score");
 var scoreEl = document.getElementById("current-score");
-
+var feedbackEl = document.getElementById("feedback");
 
 var option1 = document.getElementById("option-btn1");
 var option2 = document.getElementById("option-btn2");
@@ -47,6 +48,9 @@ startBtn.addEventListener("click", function () {
   startQuiz();
 });
 
+// this button will be used to move to the next question
+nextBtn.addEventListener("click", nextQuestion);
+
 
 function startTimer() {
   var timer = setInterval(() => {
@@ -58,49 +62,80 @@ function startTimer() {
   }, 1000);
 }
 
-var optionArr = [option1, option2, option3, option4];
-
-
-function validateAnswer() {
-  for (var i = 0; i < optionArr.length; i++) {
-
-    optionArr[i].addEventListener("click", function (e) {
-      if (e.target.innerText === questions[0].answer) {
-        console.log("This is the correct answer");
-        question2();
-      } else {
-        timeLeft -= 10;
-        console.log("This is the incorrect answer")
-      }
-    })
-  }
-}
-
-
 function startQuiz() {
+  // when the start quiz button is clicked, all of the original content on the page is being hidden
   startingContentEl.classList.add("hidden");
   highScoresEl.classList.add("hidden");
   scoreEl.classList.remove("hidden");
-
-
+  nextBtn.classList.remove("hidden");
 
   question1();
 }
 
+
+// This function is called after clicking on the next question button
+function nextQuestion (){
+  var questionIndex = 0;
+  var questionFunctions = [question1, question2]
+  
+}
+
 function question1() {
+  // This is displaying the first question from the questions array of objects
   questionEl.innerText = questions[0].question;
+  // below, all of my option buttons are getting their hidden class removed
   answersEl.classList.remove("hidden");
   option1.classList.remove("hidden");
   option2.classList.remove("hidden");
   option3.classList.remove("hidden");
   option4.classList.remove("hidden");
 
+// all of my option buttons are being filled with options from the questions array
   option1.innerText = questions[0].options[0];
   option2.innerText = questions[0].options[1];
   option3.innerText = questions[0].options[2];
   option4.innerText = questions[0].options[3];
 
-  validateAnswer();
+  // this is calling the validateAnswer function, and passing in the answer as a parameter
+  validateAnswer(questions[0].answer);
+}
+
+// this is placing all of my option buttons into an array
+var optionArr = [option1, option2, option3, option4];
+
+function validateAnswer(answer) {
+  // the length of optionArr is 4, so this loop will run 4 times
+  for (var i = 0; i < optionArr.length; i++) {
+
+    // this is adding an event listener to every index [i] in the array
+    optionArr[i].addEventListener("click", function (e) {
+      // if the innerText of the clicked button (target) matches the answer, this will run as true 
+      if (e.target.innerText === answer) {
+        console.log("This is the correct answer");
+        correctFeedback();
+
+
+      } else {
+        timeLeft -= 10;
+        console.log("This is the incorrect answer")
+        incorrectFeedback();
+      }
+    })
+  }
+}
+
+function correctFeedback() {
+  var correctMessage = "Correct! Adding 10 Points";
+  feedbackEl.innerText = correctMessage;
+
+  document.body.style.backgroundColor = "#42f55d";
+}
+
+function incorrectFeedback(){
+  var incorrectMessage = "Incorrect!";
+  feedbackEl.innerText = incorrectMessage;
+
+  document.body.style.backgroundColor = "#f54242";
 }
 
 function question2() {
@@ -110,7 +145,7 @@ function question2() {
   option2.innerText = questions[1].options[1];
   option3.innerText = questions[1].options[2];
   option4.innerText = questions[1].options[3];
-  validateAnswer();
+  validateAnswer(questions[1].answer);
 }
 
 
@@ -267,9 +302,3 @@ function question2() {
 
 // WHEN the game is over
 // THEN I can save my initials and score
-
-
-
-
-// Create DOM elements dynamically, for questions, and options (1 loop)
-// 

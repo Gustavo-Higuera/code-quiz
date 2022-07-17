@@ -64,6 +64,17 @@ button:hover {
   flex-direction: column;
 }
 
+#feedback {
+  border-top: 2px solid black;
+  margin-top: .5rem;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+#next-btn {
+  margin: 15px;
+}
+
 .quiz {
   display: flex;
   justify-content: center;
