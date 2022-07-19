@@ -71,10 +71,6 @@ button:hover {
   font-weight: bold;
 }
 
-#next-btn {
-  margin: 15px;
-}
-
 .quiz {
   display: flex;
   justify-content: center;
