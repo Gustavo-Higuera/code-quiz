@@ -13,7 +13,8 @@ var option2 = document.getElementById("option-btn2");
 var option3 = document.getElementById("option-btn3");
 var option4 = document.getElementById("option-btn4");
 
-var timeLeft = 120;
+var timeLeft = 60;
+var score = 0;
 
 var questions = [{
   question: "Commonly used data types DO NOT include:",
@@ -62,29 +63,10 @@ function startQuiz() {
   startingContentEl.classList.add("hidden");
   highScoresEl.classList.add("hidden");
   scoreEl.classList.remove("hidden");
+  scoreEl.innerHTML = "Current Score: 0";
+
+
   question1();
-}
-
-// this is placing all of my option buttons into an array
-var optionArr = [option1, option2, option3, option4];
-// this is placing all of the question functions into an array
-var questionFunctionsArray = [question1, question2, question3, question4, question5];
-
-function validateAnswer(answer) {
-  // the length of optionArr is 4, so this loop will run 4 times
-  for (var i = 0; i < optionArr.length; i++) {
-    // this is adding an event listener to every index [i] in the array
-    optionArr[i].addEventListener("click", function (e) {
-      // if the innerText of the clicked button (target) matches the answer, this will run as true 
-      if (e.target.innerText === answer) {
-        correctFeedback();
-        
-      } else {
-        timeLeft -= 10;
-        incorrectFeedback();
-      }
-    })
-  }
 }
 
 // This function is called after clicking on the next question button
@@ -104,61 +86,145 @@ function question1() {
   option3.innerText = questions[0].options[2];
   option4.innerText = questions[0].options[3];
   // this is calling the validateAnswer function, and passing in the answer as a parameter
-  validateAnswer(questions[0].answer);
+  validateQ1();
+}
+
+optionArr = [option1, option2, option3, option4];
+
+function validateQ1() {
+  for (let i = 0; i < optionArr.length; i++) {
+    optionArr[i].addEventListener("click", function (e) {
+      // if the innerText of the clicked button (target) matches the answer, this will run as true 
+      if (e.target.innerText === questions[0].answer) {
+        correctFeedback();
+        score++;
+        scoreEl.textContent = "Current Score: " + score;
+        question2();
+      } else {
+        timeLeft -= 10;
+        incorrectFeedback();
+      }
+    })
+  }
 }
 
 function question2() {
   questionEl.innerText = questions[1].question;
-
   option1.innerText = questions[1].options[0];
   option2.innerText = questions[1].options[1];
   option3.innerText = questions[1].options[2];
   option4.innerText = questions[1].options[3];
-  validateAnswer(questions[1].answer);
+
+  validateQ2();
+}
+
+function validateQ2() {
+  for (let i = 0; i < optionArr.length; i++) {
+    optionArr[i].addEventListener("click", function (e) {
+      // if the innerText of the clicked button (target) matches the answer, this will run as true 
+      if (e.target.innerText === questions[1].answer) {
+        correctFeedback();
+        score++;
+        scoreEl.textContent = "Current Score: " + score;
+        question3();
+      } else {
+        timeLeft -= 10;
+        incorrectFeedback();
+      }
+    })
+  }
 }
 
 function question3() {
   questionEl.innerText = questions[2].question;
-
   option1.innerText = questions[2].options[0];
   option2.innerText = questions[2].options[1];
   option3.innerText = questions[2].options[2];
   option4.innerText = questions[2].options[3];
-  validateAnswer(questions[2].answer);
+  validateQ3();
+}
+
+function validateQ3() {
+  for (let i = 0; i < optionArr.length; i++) {
+    optionArr[i].addEventListener("click", function (e) {
+      // if the innerText of the clicked button (target) matches the answer, this will run as true 
+      if (e.target.innerText === questions[2].answer) {
+        correctFeedback();
+        score++;
+        scoreEl.textContent = "Current Score: " + score;
+        question4();
+      } else {
+        timeLeft -= 10;
+        incorrectFeedback();
+      }
+    })
+  }
 }
 
 function question4() {
   questionEl.innerText = questions[3].question;
-
   option1.innerText = questions[3].options[0];
   option2.innerText = questions[3].options[1];
   option3.innerText = questions[3].options[2];
   option4.innerText = questions[3].options[3];
-  validateAnswer(questions[3].answer);
+  validateQ4();
+}
+
+function validateQ4() {
+  for (let i = 0; i < optionArr.length; i++) {
+    optionArr[i].addEventListener("click", function (e) {
+      // if the innerText of the clicked button (target) matches the answer, this will run as true 
+      if (e.target.innerText === questions[3].answer) {
+        correctFeedback();
+        score++;
+        scoreEl.textContent = "Current Score: " + score;
+        question5();
+      } else {
+        timeLeft -= 10;
+        incorrectFeedback();
+      }
+    })
+  }
 }
 
 function question5() {
   questionEl.innerText = questions[4].question;
-
   option1.innerText = questions[4].options[0];
   option2.innerText = questions[4].options[1];
   option3.innerText = questions[4].options[2];
   option4.innerText = questions[4].options[3];
-  validateAnswer(questions[4].answer);
+  validateQ5();
+}
+
+function validateQ5() {
+  for (let i = 0; i < optionArr.length; i++) {
+    optionArr[i].addEventListener("click", function (e) {
+      // if the innerText of the clicked button (target) matches the answer, this will run as true 
+      if (e.target.innerText === questions[4].answer) {
+        correctFeedback();
+        score++;
+        scoreEl.textContent = "Current Score: " + score;
+        endGame();
+      } else {
+        timeLeft -= 10;
+        incorrectFeedback();
+      }
+    })
+  }
 }
 
 function correctFeedback() {
-  var correctMessage = "Correct! Adding 10 Points";
+  var correctMessage = "You answered the last question correct! +1 point.";
   feedbackEl.innerText = correctMessage;
-
-  document.body.style.backgroundColor = "#42f55d";
 }
 
 function incorrectFeedback() {
-  var incorrectMessage = "Incorrect!";
+  var incorrectMessage = "Incorrect! Removing 10 seconds.";
   feedbackEl.innerText = incorrectMessage;
+}
 
-  document.body.style.backgroundColor = "#f54242";
+function endGame(){
+
 }
 
 // WHEN all questions are answered or the timer reaches 0
