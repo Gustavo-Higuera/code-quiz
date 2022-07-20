@@ -13,7 +13,7 @@ var option2 = document.getElementById("option-btn2");
 var option3 = document.getElementById("option-btn3");
 var option4 = document.getElementById("option-btn4");
 
-var timeLeft = 60;
+var timeLeft = 120;
 var score = 0;
 
 var questions = [{
@@ -55,7 +55,6 @@ function startTimer() {
     if (timeLeft <= 0) {
       clearInterval(timer);
       timeEl.textContent = "Out of time!";
-      // endGame();
     }
   }, 1000);
 }
@@ -73,24 +72,19 @@ function startQuiz() {
   option3.classList.remove("hidden");
   option4.classList.remove("hidden");
 
-
-  createQuiz();
+  createQuizFormat();
 }
-var questionsArr = [questions[0].question, questions[1].question, questions[2].question, questions[3].question, questions[4].question];
 
-var currentQuestionIndex = questions[0].question;
+var currentQuestionIndex = 0;
 
-function createQuiz() {
-  for (let i = 0; i < questionsArr.length; i++) {
-    questionEl.innerText = currentQuestionIndex;
-    option1.innerText = questions[i].options[0];
-    option2.innerText = questions[i].options[1];
-    option3.innerText = questions[i].options[2];
-    option4.innerText = questions[i].options[3];
+function createQuizFormat() {
+  questionEl.innerText = questions[currentQuestionIndex].question;
+  option1.innerText = questions[currentQuestionIndex].options[0];
+  option2.innerText = questions[currentQuestionIndex].options[1];
+  option3.innerText = questions[currentQuestionIndex].options[2];
+  option4.innerText = questions[currentQuestionIndex].options[3];
 
-    validateAnswer(questions[i].answer);
-
-  }
+  validateAnswer(questions[currentQuestionIndex].answer);
 
 }
 
@@ -106,9 +100,10 @@ function validateAnswer(answer) {
         scoreEl.textContent = "Current Score: " + score;
         currentQuestionIndex++;
       } else {
-        timeLeft -= 10;
         incorrectFeedback();
+        timeLeft = timeLeft - 10;
       }
+      return createQuizFormat();
     })
   }
 }
@@ -123,147 +118,3 @@ function incorrectFeedback() {
   feedbackEl.innerText = incorrectMessage;
 }
 
-// // This function is called after clicking on the next question button
-// function question1() {
-//   // This is displaying the first question from the questions array of objects
-//   questionEl.innerText = questions[0].question;
-//   // below, all of my option buttons are getting their hidden class removed
-
-//   // all of my option buttons are being filled with options from the questions array
-//   option1.innerText = questions[0].options[0];
-//   option2.innerText = questions[0].options[1];
-//   option3.innerText = questions[0].options[2];
-//   option4.innerText = questions[0].options[3];
-//   // this is calling the validateAnswer function, and passing in the answer as a parameter
-//   validateQ1();
-// }
-
-// function validateQ1() {
-//   for (let i = 0; i < optionArr.length; i++) {
-//     optionArr[i].addEventListener("click", function (e) {
-//       // if the innerText of the clicked button (target) matches the answer, this will run as true
-//       if (e.target.innerText === questions[0].answer) {
-//         correctFeedback();
-//         score++;
-//         scoreEl.textContent = "Current Score: " + score;
-//         question2();
-//       } else {
-//         timeLeft -= 10;
-//         incorrectFeedback();
-//       }
-//     })
-//   }
-// }
-
-// function question2() {
-//   questionEl.innerText = questions[1].question;
-//   option1.innerText = questions[1].options[0];
-//   option2.innerText = questions[1].options[1];
-//   option3.innerText = questions[1].options[2];
-//   option4.innerText = questions[1].options[3];
-
-//   validateQ2();
-// }
-
-
-// function validateQ2() {
-//   for (let i = 0; i < optionArr.length; i++) {
-//     optionArr[i].addEventListener("click", function (e) {
-//       // if the innerText of the clicked button (target) matches the answer, this will run as true
-//       if (e.target.innerText === questions[1].answer) {
-//         correctFeedback();
-//         score++;
-//         scoreEl.textContent = "Current Score: " + score;
-//         question3();
-//       } else {
-//         timeLeft -= 10;
-//         incorrectFeedback();
-//       }
-//     })
-//   }
-// }
-
-// function question3() {
-//   questionEl.innerText = questions[2].question;
-//   option1.innerText = questions[2].options[0];
-//   option2.innerText = questions[2].options[1];
-//   option3.innerText = questions[2].options[2];
-//   option4.innerText = questions[2].options[3];
-//   validateQ3();
-// }
-
-// function validateQ3() {
-//   for (let i = 0; i < optionArr.length; i++) {
-//     optionArr[i].addEventListener("click", function (e) {
-//       // if the innerText of the clicked button (target) matches the answer, this will run as true
-//       if (e.target.innerText === questions[2].answer) {
-//         correctFeedback();
-//         score++;
-//         scoreEl.textContent = "Current Score: " + score;
-//         question4();
-//       } else {
-//         timeLeft -= 10;
-//         incorrectFeedback();
-//       }
-//     })
-//   }
-// }
-
-// function question4() {
-//   questionEl.innerText = questions[3].question;
-//   option1.innerText = questions[3].options[0];
-//   option2.innerText = questions[3].options[1];
-//   option3.innerText = questions[3].options[2];
-//   option4.innerText = questions[3].options[3];
-//   validateQ4();
-// }
-
-// function validateQ4() {
-//   for (let i = 0; i < optionArr.length; i++) {
-//     optionArr[i].addEventListener("click", function (e) {
-//       // if the innerText of the clicked button (target) matches the answer, this will run as true
-//       if (e.target.innerText === questions[3].answer) {
-//         correctFeedback();
-//         score++;
-//         scoreEl.textContent = "Current Score: " + score;
-//         question5();
-//       } else {
-//         timeLeft -= 10;
-//         incorrectFeedback();
-//       }
-//     })
-//   }
-// }
-
-// function question5() {
-//   questionEl.innerText = questions[4].question;
-//   option1.innerText = questions[4].options[0];
-//   option2.innerText = questions[4].options[1];
-//   option3.innerText = questions[4].options[2];
-//   option4.innerText = questions[4].options[3];
-//   validateQ5();
-// }
-
-// function validateQ5() {
-//   for (let i = 0; i < optionArr.length; i++) {
-//     optionArr[i].addEventListener("click", function (e) {
-//       // if the innerText of the clicked button (target) matches the answer, this will run as true
-//       if (e.target.innerText === questions[4].answer) {
-//         correctFeedback();
-//         score++;
-//         scoreEl.textContent = "Current Score: " + score;
-//         endGame();
-//       } else {
-//         timeLeft -= 10;
-//         incorrectFeedback();
-//       }
-//     })
-//   }
-// }
-
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-
-
-// WHEN the game is over
-// THEN I can save my initials and score
