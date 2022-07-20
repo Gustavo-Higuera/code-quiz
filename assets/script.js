@@ -101,7 +101,7 @@ function validateAnswer(answer) {
         currentQuestionIndex++;
       } else {
         incorrectFeedback();
-        timeLeft = timeLeft - 10;
+        timeLeft - 10;
       }
       return createQuizFormat();
     })
@@ -117,4 +117,5 @@ function incorrectFeedback() {
   var incorrectMessage = "You answered the last question INCORRECT! -10 seconds.";
   feedbackEl.innerText = incorrectMessage;
 }
+
 
