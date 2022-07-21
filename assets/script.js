@@ -5,7 +5,7 @@ var contentEl = document.querySelector("#content");
 var optionsEl = document.querySelector("#options");
 var startBtn = document.querySelector("#start-btn");
 // Quiz Settings
-var timeGiven = 30; // initial time given to complete quiz
+var timeGiven = 35; // initial time given to complete quiz
 var timePenalty = 10; // time deducted for incorrect answer
 var scorePenalty = 50; // points deducted for incorrect answer
 var scoreReward = 100; // points rewarded for correct answer
@@ -49,13 +49,28 @@ var questions = [{
     question: "What is 2 + 2",
     options: ["8", "2", "4", "0"],
     answer: "4"
+},
+{
+    question: "Which of the following is not a programming language?",
+    options: ["JavaScript", "Java", "Python", "Git"],
+    answer: "Git"
+},
+{
+    question: "What does HTML stand for?",
+    options: ["Hyper Trainer Marking Language", "Hyper Text Marketing Language", "Hyper Text Markup Language", "Hyper Text Markup Leveler"],
+    answer: "Hyper Text Markup Language"
+},
+{
+    question: "JavaScript is a ___ -side programming language.",
+    options: ["Client", "Server", "Both", "None"],
+    answer: "Both"
 }];
 
 // add instructions to page
 var instructionsEl = document.querySelector("#instructions");
 instructionsEl.textContent = "You have " + timeGiven + " seconds to answer " + questions.length + " questions.";
 
-function startQuiz () {
+function startQuiz() {
     // start timer
     startTimer = setInterval(function () {
         timer--;
@@ -194,7 +209,7 @@ function endQuiz(message) {
 // declare scoresArr globally
 var scoresArr;
 
-function saveScore () {
+function saveScore() {
     // update scoresArr
     loadScores();
 
@@ -216,7 +231,7 @@ function saveScore () {
 }
 
 // push scores from localStorage into scoresArr
-function loadScores () {
+function loadScores() {
     // reset scoresArr with scores from local storage
     scoresArr = [];
     var savedScores = localStorage.getItem("scores");
@@ -235,7 +250,7 @@ function loadScores () {
     };
 }
 
-function viewHighScores () {
+function viewHighScores() {
     //update scoresArr
     loadScores();
 
