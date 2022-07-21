@@ -5,7 +5,7 @@ var contentEl = document.querySelector("#content");
 var optionsEl = document.querySelector("#options");
 var startBtn = document.querySelector("#start-btn");
 // Quiz Settings
-var timeGiven = 100; // initial time given to complete quiz
+var timeGiven = 30; // initial time given to complete quiz
 var timePenalty = 10; // time deducted for incorrect answer
 var scorePenalty = 50; // points deducted for incorrect answer
 var scoreReward = 100; // points rewarded for correct answer
