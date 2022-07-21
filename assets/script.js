@@ -5,8 +5,8 @@ var contentEl = document.querySelector("#content");
 var optionsEl = document.querySelector("#options");
 var startBtn = document.querySelector("#start-btn");
 // Quiz Settings
-var timeGiven = 35; // initial time given to complete quiz
-var timePenalty = 10; // time deducted for incorrect answer
+var timeGiven = 40; // initial time given to complete quiz
+var timePenalty = 3; // time deducted for incorrect answer
 var scorePenalty = 50; // points deducted for incorrect answer
 var scoreReward = 100; // points rewarded for correct answer
 var timesUpMessage = "Time's Up!"; // message to display when time runs out
@@ -125,6 +125,7 @@ function validateQuestion(event) {
             // update counters
             incorrectAnswersCounter++;
             score -= scorePenalty
+            timer = timer - timePenalty;
             // before updating timer, check if time remaining is greater than timePenalty
             if (timer > timePenalty) {
                 timer -= timePenalty;
@@ -225,7 +226,6 @@ function saveScore() {
     // push playerStats into scoresArr
     scoresArr.push(playerStats);
 
-
     // overwrite scores array in localStorage with scoresArr
     localStorage.setItem("scores", JSON.stringify(scoresArr));
 }
@@ -296,7 +296,5 @@ function viewHighScores() {
 }
 
 startBtn.addEventListener("click", startQuiz);
-
 optionsEl.addEventListener("click", validateQuestion);
-
 viewScoresBtn.addEventListener("click", viewHighScores);
